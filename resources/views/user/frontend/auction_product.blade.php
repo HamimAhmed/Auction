@@ -62,9 +62,9 @@
                                 <ul class="list-unstyled">
                                     <li><a href="" title="">Business <span class="pull-right">13</span></a></li>
                                     <li><a href="" title="">Technology <span class="pull-right">13</span></a></li>
-                                    <li><a href="" title="">Web <span class="pull-right">13</span></a></li>
-                                    <li><a href="" title="">Ecommerce <span class="pull-right">13</span></a></li>
-                                      <li><a href="" title="">Wordpress <span class="pull-right">13</span></a></li>
+                                    <li><a href="" title="">Transport <span class="pull-right">13</span></a></li>
+                                    <li><a href="" title="">Gadgets <span class="pull-right">13</span></a></li>
+                                      <li><a href="" title="">Automobiles <span class="pull-right">13</span></a></li>
                                     <li><a href="" title="">Android <span class="pull-right">13</span></a></li>
                                     <li><a href="" title="">IOS <span class="pull-right">13</span></a></li>
                                     <li><a href="" title="">Windows <span class="pull-right">13</span></a></li>
