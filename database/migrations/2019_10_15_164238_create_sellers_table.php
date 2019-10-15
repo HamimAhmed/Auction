@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIndividualsTable extends Migration
+class CreateSellersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreateIndividualsTable extends Migration
      */
     public function up()
     {
-        Schema::create('individuals', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('sellers', function (Blueprint $table) {
+                $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('first_name',155);
             $table->string('last_name',155);
-            $table->string('date_of_birth',155);
-            $table->string('country',125);
-            $table->string('state',121);
-            $table->text('present_address');
-            $table->text('parmanent_address');
-            $table->string('zip_code',125);
+            $table->text('address_line_1');
+            $table->text('address_line_2');
+            $table->string('country',25);
+            $table->string('state',25);
             $table->string('phone_no',55)->unique();
+            $table->string('zip_code',55);
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -36,6 +36,6 @@ class CreateIndividualsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('individuals');
+        Schema::dropIfExists('sellers');
     }
 }

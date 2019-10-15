@@ -37,11 +37,11 @@ class User extends Authenticatable
     ];
 
 
-    public function commercial(){
-        return $this->hasOne( Commercial::class);
+    public function seller(){
+        return $this->hasOne(Seller::class);
     }
 
-    public function individuall(){
-        return $this->hasOne( individual::class);
+    public function buyer(){
+        return $this->hasOne( Buyer::class);
     }
 }

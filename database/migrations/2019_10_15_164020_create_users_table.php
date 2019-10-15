@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration
 {
@@ -15,12 +15,10 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('email_address',192)->unique();
+            $table->string('email_address',191)->unique();
             $table->string('password',191);
             $table->string('confirm_password',191);
-            $table->string('role',10);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+            $table->string('role',191);
             $table->timestamps();
         });
     }

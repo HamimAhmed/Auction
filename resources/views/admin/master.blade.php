@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/css/main.css') }}">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    @yield('css')
 </head>
 <body class="app sidebar-mini rtl">
 <!-- Navbar-->
@@ -28,6 +29,7 @@
     @yield('content')
 
 </main>
+
 <!-- Essential javascripts for application to work-->
 <script src="{{asset('backend/js/jquery-3.2.1.min.js')}}"></script>
 <script src="{{asset('backend/js/popper.min.js')}}"></script>
@@ -38,5 +40,6 @@
 
 <!-- Page specific javascripts-->
 
+@yield('js')
 </body>
 </html>

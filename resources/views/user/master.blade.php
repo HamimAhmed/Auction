@@ -70,7 +70,8 @@ Header
 <!--==========================
   Intro Section
 ============================-->
-@include('user.partials._intro')
+@yield('intro')
+{{--@include('user.partials._intro')--}}
 <!-- #intro -->
 
 <main id="main">
