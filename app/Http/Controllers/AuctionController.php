@@ -6,7 +6,22 @@ use Illuminate\Http\Request;
 
 class AuctionController extends Controller
 {
-    public function Auction(){
-        return view('user.frontend.auction_product');
+
+    public function ShowIndividualForm(){
+        return view('user.frontend.individualsell');
     }
+
+    public function ProcessIndividualForm( Request $request){
+
+    }
+
+
+     public  function ShowBusinessForm(){
+        return view('user.frontend.businessell');
+     }
+
+
+     public  function ProcessBusinessForm(Request $request){
+
+     }
 }

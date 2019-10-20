@@ -1,7 +1,7 @@
 @extends('user.master')
 
 @section('title')
-    Auction_Product
+    Business_Product
 @stop
 
 @section('css')
@@ -64,8 +64,17 @@
 
 @section('content')
 
-    <section>
-        <div class="container mb-5 mt-5 pt-5">
+    <section class="mt-5 pt-5">
+        <div class="pt-5 pb-5">
+            <ul class="app-breadcrumb breadcrumb pt-5 pb-5">
+                <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                <li class="breadcrumb-item">Auction</li>
+                <li class="breadcrumb-item"><a href="#">Business Products</a></li>
+            </ul>
+        </div>
+
+        {{----}}
+        <div class="container mb-5 mt-2 pt-2">
             <div class="row">
                 <div class="col text-md-center">
                     <!-- Category -->
@@ -85,34 +94,6 @@
                 </div>
                 <div class="col-6 mt-5">
                     <div class="card mb-3">
-                        <div class="card-body mb-3">
-                            <div class="clearfix">
-                                <div class="float-left w-25">
-                                    <img src="img/portfolio/app1.jpg" class="img-fluid border-3" alt="not found">
-                                </div>
-                                <div class="float-right w-75 pl-3">
-                                    <a href=""><h3>Alias doloribus labore nam necessitatibus voluptas.</h3></a>
-                                    <h6>Brand New</h6>
-                                    <h4>current price: $89</h4>
-                                    <div class="clearfix">
-                                        <h6 class="float-left">9 bids</h6>
-                                        <span class="float-right">2-3 business days delivery</span>
-                                    </div>
-                                    <p> Alias doloribus labore nam necessitatibus voluptas.</p>
-                                    <a href="" class="btn btn-info">More Details</a>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="card-footer text-muted">
-                            3 days 10 hour to finish
-                        </div>
-                    </div>
-
-
-
-                    {{----}}
-                    <div class="card">
                         <div class="card-body mb-3">
                             <div class="clearfix">
                                 <div class="float-left w-25">

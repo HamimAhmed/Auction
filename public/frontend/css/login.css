@@ -11,8 +11,8 @@
 #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: #fff;
-    padding: 30px;
+    background: #0f6674;
+    padding: 20px;
     width: 90%;
     max-width: 450px;
     position: relative;
@@ -41,7 +41,7 @@ h2.inactive {
 
 h2.active {
     color: #0d0d0d;
-    border-bottom: 2px solid #5fbae9;
+    border-bottom: 2px solid #1fdbe7;
 }
 
 
@@ -49,7 +49,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-    background-color: #56baed;
+    background-color: #edcc30;
     border: none;
     color: white;
     padding: 15px 80px;
@@ -71,7 +71,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-    background-color: #39ace7;
+    background-color: #e7e106;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -84,7 +84,6 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 
 input[type=text] {
     background-color: #f6f6f6;
-    border: none;
     color: #0d0d0d;
     padding: 15px 32px;
     text-align: center;
@@ -93,10 +92,9 @@ input[type=text] {
     font-size: 16px;
     margin: 5px;
     width: 85%;
-    border: 2px solid #f6f6f6;
+    border: 2px solid #0c5460;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     -webkit-border-radius: 5px 5px 5px 5px;
@@ -105,7 +103,7 @@ input[type=text] {
 
 input[type=text]:focus {
     background-color: #fff;
-    border-bottom: 2px solid #5fbae9;
+    border-bottom: 5px solid #5fbae9;
 }
 
 input[type=text]:placeholder {
@@ -216,8 +214,8 @@ input[type=text]:placeholder {
     width: 100%;
 }
 
-h1{
-    color:#60a0ff;
+h4{
+    color: #1ad8ff;
 }
 
 /* OTHERS */

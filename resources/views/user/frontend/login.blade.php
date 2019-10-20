@@ -15,21 +15,42 @@
             <!-- Tabs Titles -->
 
             <!-- Icon -->
-            <div class="fadeIn first">
+            <div class="fadeIn first mt-3">
                 <img src="img/login.jpg" id="icon" alt="User Icon" />
-                <h1>Login Here</h1>
+            </div>
+            <div class="mt-3 mb-3">
+                <h5 class="text-white">Login your Account</h5>
             </div>
 
             <!-- Login Form -->
-            <form>
-                <input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
+            <form method="post" action="{{route('login')}}">
+
+                @if(count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
+                @if(session()->has('message'))
+                    <div class="alert alert-{{session('type')}}">
+                        {{session('message')}}
+
+                    </div>
+                    @endif
+
+                @csrf
+                <input type="text" id="login" class="fadeIn second" name="email_address" placeholder="Email Address">
                 <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
-                <input type="submit" class="fadeIn fourth" value="Log In">
+                <input type="submit" class="fadeIn fourth btn btn-danger" value="Log In">
             </form>
 
             <!-- Remind Passowrd -->
             <div id="formFooter">
-                <a class="underlineHover" href="#">Go For Registration</a>
+                <a class="underlineHover" href="#">Forgot Password</a>
             </div>
 
         </div>

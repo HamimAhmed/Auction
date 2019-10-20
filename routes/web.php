@@ -10,18 +10,35 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes(['verify'=> true]);
 Route::get('/', 'HomeController@home')->name('home');
-Route::get('/admin', 'AdminController@index')->name('index');
+
 
 Route::get('/seller', 'AuthController@ShowSellerRegistrationForm')->name('seller.register');
 Route::post('/seller', 'AuthController@ProcessSellerRegistrationForm');
 
 Route::get('/buyer','AuthController@ShowBuyerRegistrationForm')->name('buyer.register');
-Route::post('/buyer','AuthController@ProcessBuyerRegistartionForm');
+Route::post('/buyer','AuthController@ProcessBuyerRegistrationForm');
 
 Route::get('/login','AuthController@ShowLoginForm')->name('login');
+Route::post('/login','AuthController@ProcessLoginForm');
 
-Route::get('/auction_product','AuctionController@Auction')->name('auction');
+Route::get('/seller/profile','AuthController@ShowSellerProfile')->name('seller.profile');
+Route::get('/logout','AuthController@Logout')->name('logout');
+
+
+
+Route::Resource('/test','TestController');
+Route::get('/products/category/{slug}','ProductsController@ShowCategoryList')->name('category.list');
+Route::get('/products','ProductsController@ShowSingleProduct')->name('single.show');
+Route::get('/busproducts','ProductsController@ShowBusinessProduct')->name('business.show');
+
+Route::get('/individual_auction','AuctionController@ShowIndividualForm')->name('individual.auction');
+Route::post('/individual_auction','AuctionController@ProcessIndividualForm');
+
+Route::get('/business_auction','AuctionController@ShowBusinessForm')->name('business.auction');
+Route::post('/business_auction','AuctionController@ProcessBusinessForm');
+
+Route::get('/admin', 'AdminController@index')->name('index');
 Route:: Resource('/categories','CategoriesController');
 
