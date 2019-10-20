@@ -229,7 +229,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="hidden" name="role" class="form-control" value="seller">
+                                    <input type="hidden" name="role" class="form-control" value="buyer">
                                 </div>
 
                                 <div class="form-group form-check mb-5">

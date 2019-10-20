@@ -23,7 +23,7 @@ Route::post('/buyer','AuthController@ProcessBuyerRegistrationForm');
 Route::get('/login','AuthController@ShowLoginForm')->name('login');
 Route::post('/login','AuthController@ProcessLoginForm');
 
-Route::get('/seller/profile','AuthController@ShowSellerProfile')->name('seller.profile');
+Route::get('/profile','AuthController@ShowSellerProfile')->name('profile');
 Route::get('/logout','AuthController@Logout')->name('logout');
 
 

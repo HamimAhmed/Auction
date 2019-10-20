@@ -193,7 +193,7 @@ class AuthController extends Controller
 
         $data = [''];
 
-        return view('user.frontend.seller_profile',$data);
+        return view('user.frontend.profile',$data);
 
 
     }

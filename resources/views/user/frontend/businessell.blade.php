@@ -21,7 +21,7 @@
                     <div class="card-body">
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Register</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+
                     </div>
                 </div>
             </div>
