@@ -10,5 +10,8 @@ class Category extends Model
 
     public $timestamps = false;
 
+    public function auctions(){
+        return $this->hasMany(Auction::class);
+    }
 
 }

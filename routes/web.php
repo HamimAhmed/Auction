@@ -33,8 +33,8 @@ Route::get('/products/category/{slug}','ProductsController@ShowCategoryList')->n
 Route::get('/products','ProductsController@ShowSingleProduct')->name('single.show');
 Route::get('/busproducts','ProductsController@ShowBusinessProduct')->name('business.show');
 
-Route::get('/individual_auction','AuctionController@ShowIndividualForm')->name('individual.auction');
-Route::post('/individual_auction','AuctionController@ProcessIndividualForm');
+Route::get('/single_auction','AuctionController@ShowIndividualForm')->name('single.auction');
+Route::post('/single_auction','AuctionController@ProcessIndividualForm');
 
 Route::get('/business_auction','AuctionController@ShowBusinessForm')->name('business.auction');
 Route::post('/business_auction','AuctionController@ProcessBusinessForm');

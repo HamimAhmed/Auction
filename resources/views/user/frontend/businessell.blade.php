@@ -19,8 +19,11 @@
                         <h4 class="tile-title text-white">Terms And Condition</h4>
                     </div>
                     <div class="card-body">
+                        <h5>*</h5>
+                        <h5>*</h5>
+                        <h5>*</h5>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer bg-info">
 
                     </div>
                 </div>
@@ -31,11 +34,18 @@
                         <h3 class="text-white">Auction Form</h3>
                     </div>
                     <div class="card-body">
-                        <form class="form-horizontal">
+
+                        <form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
                             <div class="form-group row">
                                 <label class="control-label col-md-3">Auction Title</label>
                                 <div class="col-md-8">
                                     <input class="form-control" type="text" name="title" placeholder="Enter Auction Title">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-3">Company Name</label>
+                                <div class="col-md-8">
+                                    <input class="form-control col-md-8" type="text" name="company_name" placeholder="Enter Your Company Name">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -45,22 +55,30 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="exampleFormControlSelect1">Select Category</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="category">
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}" > {{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group row">
                                 <label class="control-label col-md-3">Description</label>
                                 <div class="col-md-8">
-                                    <textarea class="form-control" rows="4" placeholder="Enter your address" name="description"></textarea>
+                                    <textarea class="form-control" rows="4" placeholder="Make Your Auction details" name="description"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="control-label col-md-3">Type</label>
+                                <label class="control-label col-md-3">Condition</label>
                                 <div class="col-md-9">
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="type">Old
+                                            <input class="form-check-input" type="radio" name="condition">Old
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="type">New
+                                            <input class="form-check-input" type="radio" name="condition">New
                                         </label>
                                     </div>
                                 </div>
@@ -87,6 +105,12 @@
                                 <label class="control-label col-md-3">Product Image</label>
                                 <div class="col-md-8">
                                     <input class="form-control" type="file" name="image">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-md-3"></label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="hidden" name="type" value="business">
                                 </div>
                             </div>
                             <div class="form-group row">

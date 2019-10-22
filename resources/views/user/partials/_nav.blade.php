@@ -12,7 +12,7 @@
                 <li class="drop-down"><a href="">Sell Auction</a>
                     <ul>
                         <li><a href="{{route('business.auction')}}"> As Business Purpose</a></li>
-                        <li class="drop-down"><a href="{{route('individual.auction')}}">As Individual Purpose</a>
+                        <li class="drop-down"><a href="{{route('single.auction')}}">As Individual Purpose</a>
 
                         </li>
                     </ul>
