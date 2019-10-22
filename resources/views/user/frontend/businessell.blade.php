@@ -35,7 +35,24 @@
                     </div>
                     <div class="card-body">
 
-                        <form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
+                        <form class="form-horizontal" method="post" action="{{route('business.auction')}}" enctype="multipart/form-data">
+                            @csrf
+                            @if(count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            @if(session()->has('message'))
+                                <div class="alert alert-{{session('type')}}">
+                                    {{session('message')}}
+
+                                </div>
+                            @endif
                             <div class="form-group row">
                                 <label class="control-label col-md-3">Auction Title</label>
                                 <div class="col-md-8">
@@ -45,13 +62,13 @@
                             <div class="form-group row">
                                 <label class="control-label col-md-3">Company Name</label>
                                 <div class="col-md-8">
-                                    <input class="form-control col-md-8" type="text" name="company_name" placeholder="Enter Your Company Name">
+                                    <input class="form-control" type="text" name="company_name" placeholder="Enter Your Company Name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="control-label col-md-3">Email</label>
                                 <div class="col-md-8">
-                                    <input class="form-control col-md-8" type="email" name="email" placeholder="Enter email address">
+                                    <input class="form-control col-md-8" type="email" value="{{auth()->user()->email_address}}" name="email">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -73,12 +90,12 @@
                                 <div class="col-md-9">
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="condition">Old
+                                            <input class="form-check-input" value="old" type="radio" name="condition">Old
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="condition">New
+                                            <input class="form-check-input" value="new" type="radio" name="condition">New
                                         </label>
                                     </div>
                                 </div>
@@ -92,13 +109,13 @@
                             <div class="form-group row">
                                 <label class="control-label col-md-3">Quantity</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="text" name="price" placeholder="Enter Product Quantity">
+                                    <input class="form-control" type="text" name="quantity" placeholder="Enter Product Quantity">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="control-label col-md-3"> Duration</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="datetime-local" name="duration" placeholder="Enter Auction Duration">
+                                    <input class="form-control" type="datetime-local" name="expire_date" placeholder="Enter Auction Duration">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -122,15 +139,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-8 col-md-offset-5">
+                                <button class="btn btn-info" type="submit">
+                                   Submit
+                                </button>&nbsp;
+                            </div>
                         </form>
                     </div>
                     <div class="card-footer">
                         <div class="row">
-                            <div class="col-md-8 col-md-offset-5">
-                                <button class="btn btn-info" type="button">
-                                    <i class="fa fa-fw fa-lg fa-check-circle"></i>Submit
-                                </button>&nbsp;
-                            </div>
+
                         </div>
                     </div>
                 </div>

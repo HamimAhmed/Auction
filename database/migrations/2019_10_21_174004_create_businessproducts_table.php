@@ -18,6 +18,7 @@ class CreateBusinessproductsTable extends Migration
             $table->unsignedBigInteger('auction_id');
             $table->string('title',191);
             $table->string('company_name',191);
+            $table->string('condition',55);
             $table->text('description');
             $table->string('quantity',11);
             $table->text('image');
