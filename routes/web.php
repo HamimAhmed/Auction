@@ -31,6 +31,8 @@ Route::get('/logout','AuthController@Logout')->name('logout');
 Route::Resource('/test','TestController');
 Route::get('/products/category/{slug}','ProductsController@ShowCategoryList')->name('category.list');
 Route::get('/products','ProductsController@ShowSingleProduct')->name('single.show');
+Route::get('/single/products','ProductsController@ShowSingleDetails')->name('single.details');
+
 Route::get('/busproducts','ProductsController@ShowBusinessProduct')->name('business.show');
 
 Route::get('/single_auction','AuctionController@ShowIndividualForm')->name('single.auction');

@@ -100,21 +100,21 @@
                                     <img src="img/portfolio/app1.jpg" class="img-fluid border-3" alt="not found">
                                 </div>
                                 <div class="float-right w-75 pl-3">
-                                    <a href=""><h3>Alias doloribus labore nam necessitatibus voluptas.</h3></a>
-                                    <h6>Brand New</h6>
-                                    <h4>current price: $89</h4>
+                                    <a href=""><h3></h3></a>
+                                    <h6></h6>
+                                    <h4></h4>
                                     <div class="clearfix">
                                         <h6 class="float-left">9 bids</h6>
                                         <span class="float-right">2-3 business days delivery</span>
                                     </div>
-                                    <p> Alias doloribus labore nam necessitatibus voluptas.</p>
+                                    <p> </p>
                                     <a href="" class="btn btn-info">More Details</a>
                                 </div>
                             </div>
 
                         </div>
                         <div class="card-footer text-muted">
-                            3 days 10 hour to finish
+
                         </div>
                     </div>
                 </div>

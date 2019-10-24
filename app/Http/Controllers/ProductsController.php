@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Singleproduct;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -12,7 +13,8 @@ class ProductsController extends Controller
         $data['categories'] = Category::select(['id','name','slug'])->get();
 
       //products show
-        //$data['products'] =
+        $data['products'] = Singleproduct::select(['id','title','price','quantity','expire_date','condition','image','description'])
+            ->get();
 
         return view('user.frontend.single_product', $data);
     }
@@ -31,4 +33,10 @@ class ProductsController extends Controller
 //
 //
 //    }
+
+
+    public function ShowSingleDetails(){
+        return view('user.frontend.single_details');
+    }
+
 }
