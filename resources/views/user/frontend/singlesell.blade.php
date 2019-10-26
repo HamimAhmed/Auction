@@ -59,7 +59,7 @@
                            <div class="form-group row">
                                <label class="control-label col-md-3">Email Address</label>
                                <div class="col-md-8">
-                                   <input class="form-control col-md-8" value="{{auth()->user()->email_address}}" type="email" name="email" readonly>
+                                   <input class="form-control col-md-8" value="{{auth()->user()->email}}" type="email" name="email" readonly>
                                </div>
                            </div>
                            <div class="form-group row">

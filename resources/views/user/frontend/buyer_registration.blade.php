@@ -63,8 +63,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">@</span>
                                             </div>
-                                            <input type="email" name="email_address" value="{{old('email_address')}}"
-                                                   class="form-control @error('email_address') is-invalid @enderror" id="username" placeholder="Email Address">
+                                            <input type="email" name="email" value="{{old('email')}}"
+                                                   class="form-control @error('email') is-invalid @enderror" id="username" placeholder="Email Address">
                                         </div>
                                         @error('email_address')
                                         <span class="is-invalid">

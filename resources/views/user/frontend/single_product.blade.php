@@ -98,7 +98,7 @@
                         </div>
 
                         <div class="card-footer text-muted">
-                            {{$product->expire_date}}
+                            {{$product->auction->expire_date}}
                         </div>
                     </div>
 

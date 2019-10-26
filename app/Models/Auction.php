@@ -8,12 +8,12 @@ class Auction extends Model
 {
     protected $guarded = [''];
 
-    public $timestamps = false;
+    public $timestamps = true;
 
-    public function Singleproduct(){
+    public function singleproduct(){
         return $this->hasOne(Singleproduct::class);
     }
-    public function Businessproduct(){
+    public function businessproduct(){
         return $this->hasOne(Businessproduct::class);
     }
 

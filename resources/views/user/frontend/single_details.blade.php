@@ -7,13 +7,17 @@
     <section class="mt-5 pt-5">
         <div class="container mt-5 pt-5 mb-5">
             <div class="row">
+
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
 
                         </div>
                         <div class="card-body">
-                            <img src="img/clients/client-3" alt="no image found" class="img-fluid">
+                            <div>
+                                <img src="" alt="no image found" class="img-fluid">
+                            </div>
+
                         </div>
 
                         <div class="card-footer">

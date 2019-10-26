@@ -30,8 +30,8 @@ Route::get('/logout','AuthController@Logout')->name('logout');
 
 Route::Resource('/test','TestController');
 Route::get('/products/category/{slug}','ProductsController@ShowCategoryList')->name('category.list');
-Route::get('/products','ProductsController@ShowSingleProduct')->name('single.show');
-Route::get('/single/products','ProductsController@ShowSingleDetails')->name('single.details');
+Route::get('/singleproducts','ProductsController@ShowSingleProduct')->name('single.show');
+Route::get('/single/products/{id}','ProductsController@ShowSingleDetails')->name('single.details');
 
 Route::get('/busproducts','ProductsController@ShowBusinessProduct')->name('business.show');
 
@@ -42,5 +42,10 @@ Route::get('/business_auction','AuctionController@ShowBusinessForm')->name('busi
 Route::post('/business_auction','AuctionController@ProcessBusinessForm');
 
 Route::get('/admin', 'AdminController@index')->name('index');
+Route::get('/products', 'AdminController@ShowAllProducts')->name('admin.products');
+Route::get('/products/pending', 'AdminController@PendingProducts')->name('pending.products');
+Route::get('/products/{id}', 'AdminController@ViewProducts')->name('view.products');
+Route::put('/products/{id}/approve', 'AdminController@ApproveProducts')->name('approve.products');
+
 Route:: Resource('/categories','CategoriesController');
 

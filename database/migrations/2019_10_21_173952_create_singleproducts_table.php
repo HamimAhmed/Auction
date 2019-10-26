@@ -22,7 +22,6 @@ class CreateSingleproductsTable extends Migration
             $table->string('condition',11);
             $table->text('image');
             $table->string('price',191);
-            $table->dateTime('expire_date');
             $table->foreign('auction_id')->references('id')->on('auctions')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

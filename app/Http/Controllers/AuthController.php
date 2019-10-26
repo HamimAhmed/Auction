@@ -26,7 +26,7 @@ class AuthController extends Controller
         $rules = ([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email_address' => 'email|required|unique:users',
+            'email' => 'email|required|unique:users',
             'phone_no' => 'required|min:11|max:11|unique:sellers',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required',
@@ -54,7 +54,7 @@ class AuthController extends Controller
             $user = new User();
 
 
-            $user->email_address=$request->email_address;
+            $user->email=$request->email;
             $user->password=bcrypt($request->password);
 
             $user->confirm_password=bcrypt($request->password_confirmation);
@@ -96,7 +96,7 @@ class AuthController extends Controller
         $rules = ([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email_address' => 'email|required|unique:users',
+            'email' => 'email|required|unique:users',
             'phone_no' => 'required|min:11|max:11|unique:buyers',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required',
@@ -124,7 +124,7 @@ class AuthController extends Controller
             $user=new User();
             $buyer=new Buyer();
 
-            $user->email_address=$request->email_address;
+            $user->email=$request->email;
             $user->password=bcrypt($request->password);
 
             $user->confirm_password=bcrypt($request->password_confirmation);
@@ -165,7 +165,7 @@ class AuthController extends Controller
     public function ProcessLoginForm(Request $request){
         $request->validate([
 
-         'email_address' => 'required',
+         'email' => 'required',
             'password' => 'required|min:6'
         ]);
 

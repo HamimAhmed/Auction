@@ -68,7 +68,7 @@
                             <div class="form-group row">
                                 <label class="control-label col-md-3">Email</label>
                                 <div class="col-md-8">
-                                    <input class="form-control col-md-8" type="email" value="{{auth()->user()->email_address}}" name="email">
+                                    <input class="form-control col-md-8" type="email" value="{{auth()->user()->email}}" name="email">
                                 </div>
                             </div>
                             <div class="form-group row">

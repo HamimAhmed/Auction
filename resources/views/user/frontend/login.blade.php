@@ -43,7 +43,7 @@
                     @endif
 
                 @csrf
-                <input type="text" id="login" class="fadeIn second" name="email_address" placeholder="Email Address">
+                <input type="text" id="login" class="fadeIn second" name="email" placeholder="Email Address">
                 <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
                 <input type="submit" class="fadeIn fourth btn btn-danger" value="Log In">
             </form>

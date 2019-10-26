@@ -13,7 +13,8 @@ class ProductsController extends Controller
         $data['categories'] = Category::select(['id','name','slug'])->get();
 
       //products show
-        $data['products'] = Singleproduct::select(['id','title','price','quantity','expire_date','condition','image','description'])
+        $data['products'] = Singleproduct::with('auction')
+            ->select(['id','auction_id','title','price','quantity','condition','image','description'])
             ->get();
 
         return view('user.frontend.single_product', $data);

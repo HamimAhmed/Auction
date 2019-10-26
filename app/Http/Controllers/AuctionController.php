@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AuctionCreated;
 use App\Models\Auction;
 use App\Models\Businessproduct;
 use App\Models\Category;
 use App\Models\Singleproduct;
+use App\Models\User;
+use App\Notifications\NotifyBuyers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 
 class AuctionController extends Controller
@@ -39,12 +43,13 @@ class AuctionController extends Controller
             $file->storeAs('auction_images', $file_name);
         }
 
-        try {
+       // try {
             $auction = new Auction();
             $auction->user_id = auth()->user()->id;
             $auction->email = $request->email;
             $auction->type = $request->type;
             $auction->category_id = $request->category;
+            $auction->expire_date = $request->expire_date;
             $auction->save();
 
             $single = new Singleproduct();
@@ -55,20 +60,25 @@ class AuctionController extends Controller
             $single->description = $request->description;
             $single->image = $file_name;
             $single->price = $request->price;
-            $single->expire_date = $request->expire_date;
             $single->save();
+            $users = User::where('role','buyer')->get();
+
+            Notification::send($users,new NotifyBuyers($single));
+
+            $auction = Auction::with('user')->find($auction->id);
+            event(new AuctionCreated($auction));
 
             session()->flash('type', 'success');
             session()->flash('message', 'Uploads successfully');
             return redirect()->back();
 
 
-        } catch (\Exception $e) {
-            session()->flash('type', 'danger');
-            session()->flash('message', 'Uploads failed');
-            return redirect()->back();
+       // } catch (\Exception $e) {
+           // session()->flash('type', 'danger');
+           // session()->flash('message', 'Uploads failed');
+           // return redirect()->back();
 
-        }
+        //}
     }
 
 
@@ -108,20 +118,26 @@ class AuctionController extends Controller
             $auction->email = $request->email;
             $auction->type = $request->type;
             $auction->category_id = $request->category;
+            $auction->expire_date = $request->expire_date;
             $auction->save();
 
             $bus = new Businessproduct();
 
             $bus->auction_id = $auction->id;
-            $bus->title = $request->title;
             $bus->company_name = $request->company_name;
             $bus->quantity = $request->quantity;
+            $bus->title = $request->title;
             $bus->condition = $request->condition;
             $bus->description = $request->description;
             $bus->image = $file_name;
             $bus->price = $request->price;
-            $bus->expire_date = $request->expire_date;
             $bus->save();
+           $users = User::where('role','buyer')->get();
+
+            Notification::send($users,new NotifyBuyers($bus));
+
+            $auction = Auction::with('user')->find($auction->id);
+            event(new AuctionCreated($auction));
 
             session()->flash('type', 'success');
             session()->flash('message', 'Uploads successfully');
