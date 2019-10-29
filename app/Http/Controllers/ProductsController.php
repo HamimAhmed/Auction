@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auction;
+use App\Models\Bid;
 use App\Models\Category;
-use App\Models\Singleproduct;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
-    public function ShowSingleProduct(){
-        $data=[];
-        $data['categories'] = Category::select(['id','name','slug'])->get();
+    public function ShowAuction()
+    {
+        $data = [];
+        $data['categories'] = Category::select(['id', 'name', 'slug'])->get();
 
-      //products show
-        $data['products'] = Singleproduct::with('auction')
-            ->select(['id','auction_id','title','price','quantity','condition','image','description'])
+        //products show
+        $data['auctions'] = Auction::with(['user','category'])
+            ->where('expire_date','>', Date('y-m-d'))
             ->get();
 
-        return view('user.frontend.single_product', $data);
+        return view('user.frontend.auctions', $data);
     }
 
-    public function ShowBusinessProduct(){
-        return view('user.frontend.business_product');
-    }
+
 
 //    public function ShowCategoryList($slug){
 //        $data=[];
@@ -36,8 +36,18 @@ class ProductsController extends Controller
 //    }
 
 
-    public function ShowSingleDetails(){
-        return view('user.frontend.single_details');
+    public function ShowAuctionDetails($id)
+    {
+        $data = [''];
+
+//        $data['bids'] = Bid::with('auction','user')
+//            ->where('auction_id',$id)
+//          ->get();
+
+
+        $data['auction'] = Auction::with('user')->find($id);
+        $data['bids'] = $data['auction']->bids;
+        return view('user.frontend.auction_details', $data);
     }
 
 }

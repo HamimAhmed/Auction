@@ -1,7 +1,8 @@
 @extends('user.master')
 
 @section('css')
-    @stop
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+@stop
 
 @section('content')
    <section class="mt-5 pt-5 mb-5">
@@ -32,7 +33,7 @@
                    </div>
                    <div class="card-body">
 
-                       <form class="form-horizontal" method="post" action="{{route('single.auction')}}" enctype="multipart/form-data">
+                       <form class="form-horizontal" method="post" action="{{route('auction')}}" enctype="multipart/form-data">
                        @csrf
                            @if(count($errors) > 0)
                                <div class="alert alert-danger">
@@ -60,6 +61,12 @@
                                <label class="control-label col-md-3">Email Address</label>
                                <div class="col-md-8">
                                    <input class="form-control col-md-8" value="{{auth()->user()->email}}" type="email" name="email" readonly>
+                               </div>
+                           </div>
+                           <div class="form-group row">
+                               <label class="control-label col-md-3">Company Name</label>
+                               <div class="col-md-8">
+                                   <input class="form-control col-md-8" value="" type="text" name="company_name">
                                </div>
                            </div>
                            <div class="form-group row">
@@ -106,15 +113,11 @@
                            <div class="form-group row">
                                <label class="control-label col-md-3"> Duration</label>
                                <div class="col-md-8">
-                                   <input class="form-control" type="datetime-local" name="expire_date" placeholder="Enter Auction Duration">
+                                   {{--<input class="form-control"id="datepicker" type="datetime-local" name="expire_date" placeholder="Enter Auction Duration">--}}
+                                   <input type="text" name="expire_date" id="datepicker">
                                </div>
                            </div>
-                           <div class="form-group row">
-                               <label class="control-label col-md-3"></label>
-                               <div class="col-md-8">
-                                   <input class="form-control" type="hidden" name="type" value="single">
-                               </div>
-                           </div>
+
                            <div class="form-group row">
                                <label class="control-label col-md-3">Product Image</label>
                                <div class="col-md-8">
@@ -147,7 +150,19 @@
    </section>
 @stop
 
-@section('jss')
+@section('js')
+    <script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+    <script>
+    $( function() {
+        $( "#datepicker" ).datepicker({
+            minDate: new Date(),
+            dateFormat: 'yy-m-dd'
+        });
+    } );
+    </script>
 @stop
 
 

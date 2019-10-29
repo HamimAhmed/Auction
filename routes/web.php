@@ -13,12 +13,13 @@
 Auth::routes(['verify'=> true]);
 Route::get('/', 'HomeController@home')->name('home');
 
-
+//seller routes
 Route::get('/seller', 'AuthController@ShowSellerRegistrationForm')->name('seller.register');
 Route::post('/seller', 'AuthController@ProcessSellerRegistrationForm');
-
+// buyer routes
 Route::get('/buyer','AuthController@ShowBuyerRegistrationForm')->name('buyer.register');
 Route::post('/buyer','AuthController@ProcessBuyerRegistrationForm');
+
 
 Route::get('/login','AuthController@ShowLoginForm')->name('login');
 Route::post('/login','AuthController@ProcessLoginForm');
@@ -28,18 +29,20 @@ Route::get('/logout','AuthController@Logout')->name('logout');
 
 
 
-Route::Resource('/test','TestController');
+//Route::Resource('/test','TestController');
 Route::get('/products/category/{slug}','ProductsController@ShowCategoryList')->name('category.list');
-Route::get('/singleproducts','ProductsController@ShowSingleProduct')->name('single.show');
-Route::get('/single/products/{id}','ProductsController@ShowSingleDetails')->name('single.details');
+Route::get('/singleproducts','ProductsController@ShowAuction')->name('auction.show');
+Route::get('/single/products/{id}','ProductsController@ShowAuctionDetails')->name('auction.details');
 
 Route::get('/busproducts','ProductsController@ShowBusinessProduct')->name('business.show');
 
-Route::get('/single_auction','AuctionController@ShowIndividualForm')->name('single.auction');
-Route::post('/single_auction','AuctionController@ProcessIndividualForm');
+Route::get('/auction','AuctionController@ShowAuctionForm')->name('auction');
+Route::post('/auction','AuctionController@ProcessAuctionForm');
 
 Route::get('/business_auction','AuctionController@ShowBusinessForm')->name('business.auction');
 Route::post('/business_auction','AuctionController@ProcessBusinessForm');
+
+Route:: post('/bid','AuctionController@PlaceBids')->name('bid');
 
 Route::get('/admin', 'AdminController@index')->name('index');
 Route::get('/products', 'AdminController@ShowAllProducts')->name('admin.products');

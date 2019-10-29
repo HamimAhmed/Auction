@@ -11,8 +11,8 @@
 
                 <li class="drop-down"><a href="">Sell Auction</a>
                     <ul>
-                        <li><a href="{{route('business.auction')}}"> As Business Purpose</a></li>
-                        <li class="drop-down"><a href="{{route('single.auction')}}">As Individual Purpose</a>
+
+                        <li class="drop-down"><a href="{{route('auction')}}">Auction Form</a>
 
                         </li>
                     </ul>
@@ -24,9 +24,10 @@
 
                 <li class="drop-down"><a href="">Join Auction</a>
                     <ul>
-                        <li><a href="{{route('single.show')}}"> Single Auction</a></li>
-                        <li class="drop-down"><a href="{{route('business.show')}}">Business Auction</a>
+                        <li>
+                            <a href="{{route('auction.show')}}"> Single Auction</a>
                         </li>
+
                     </ul>
                 </li>
                 <li><a href="{{route('profile')}}">{{auth()->user()->buyer->first_name}}</a>

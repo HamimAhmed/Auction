@@ -10,12 +10,6 @@ class Auction extends Model
 
     public $timestamps = true;
 
-    public function singleproduct(){
-        return $this->hasOne(Singleproduct::class);
-    }
-    public function businessproduct(){
-        return $this->hasOne(Businessproduct::class);
-    }
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -24,6 +18,10 @@ class Auction extends Model
     public  function category(){
 
         return $this->belongsTo(Category::class);
+    }
+
+    public function bids(){
+        return $this->hasMany(Bid::class);
     }
 
 }

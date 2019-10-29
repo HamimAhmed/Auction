@@ -73,7 +73,7 @@
                 </div>
                 <div class="col-6 mt-5">
 
-                    @foreach($products as $product)
+                    @foreach($auctions as $auction)
 
                     <div class="card mb-3">
 
@@ -81,24 +81,24 @@
 
                             <div class="clearfix">
                                 <div class="float-left w-25">
-                                    <img src="{{asset('uploads/auction_images/'.$product->image) }}" class="img-fluid border-3" alt="not found">
+                                    <img src="{{asset('uploads/auction_images/'.$auction->image) }}" class="img-fluid border-3" alt="not found">
                                 </div>
                                 <div class="float-right w-75 pl-3">
-                                    <a href="{{route('single.details',$product->id)}}"><h3>{{$product->title}}</h3></a>
-                                    <h6>{{$product->condition}}</h6>
-                                    <h4>current price: {{$product->price}}</h4>
+                                    <a href="{{route('auction.details',$auction->id)}}"><h3>{{$auction->title}}</h3></a>
+                                    <h6>{{$auction->condition}}</h6>
+                                    <h4>current price: {{$auction->price}}</h4>
                                     <div class="clearfix">
                                         <h6 class="float-left">9 bids</h6>
                                         <span class="float-right">2-3 business days delivery</span>
                                     </div>
-                                    <p>{{$product->description}}</p>
+                                    <p>{{$auction->description}}</p>
                                     <a href="" class="btn btn-info">More Details</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="card-footer text-muted">
-                            {{$product->auction->expire_date}}
+                            {{$auction->expire_date}}
                         </div>
                     </div>
 

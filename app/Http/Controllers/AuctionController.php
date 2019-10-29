@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\AuctionCreated;
 use App\Models\Auction;
+use App\Models\Bid;
 use App\Models\Businessproduct;
 use App\Models\Category;
 use App\Models\Singleproduct;
@@ -16,18 +17,19 @@ use Illuminate\Support\Str;
 class AuctionController extends Controller
 {
 
-    public function ShowIndividualForm()
+    public function ShowAuctionForm()
     {
         $data = [];
         $data['categories'] = Category::select('id', 'name')->get();
-        return view('user.frontend.singlesell', $data);
+        return view('user.frontend.auctionsell', $data);
     }
 
-    public function ProcessIndividualForm(Request $request)
+    public function ProcessAuctionForm(Request $request)
     {
         $request->validate([
-            'title' => 'required|unique:singleproducts|max:255',
+            'title' => 'required|unique:auctions|max:255',
             'quantity' => 'required',
+            'company_name' => 'required',
             'price' => 'required',
             'condition' => 'required',
             'image' => 'required|image|mimes:jpeg,bmp,png',
@@ -44,26 +46,32 @@ class AuctionController extends Controller
         }
 
        // try {
-            $auction = new Auction();
-            $auction->user_id = auth()->user()->id;
-            $auction->email = $request->email;
-            $auction->type = $request->type;
-            $auction->category_id = $request->category;
-            $auction->expire_date = $request->expire_date;
-            $auction->save();
+        $auction = new Auction();
+        $auction->user_id = auth()->user()->id;
+        $auction->email = $request->email;
+        $auction->company_name = $request->company_name;
+        $auction->category_id = $request->category;
+        $auction->expire_date = $request->expire_date;
+        $auction->title = $request->title;
+        $auction->quantity = $request->quantity;
+        $auction->condition = $request->condition;
+        $auction->description = $request->description;
+        $auction->image = $file_name;
+        $auction->price = $request->price;
+        $auction->save();
 
-            $single = new Singleproduct();
-            $single->auction_id = $auction->id;
-            $single->title = $request->title;
-            $single->quantity = $request->quantity;
-            $single->condition = $request->condition;
-            $single->description = $request->description;
-            $single->image = $file_name;
-            $single->price = $request->price;
-            $single->save();
+
+
+            $bid = new Bid();
+            $bid->auction_id = $auction->id;
+            $bid->user_id = auth()->user()->id;
+            $bid->bid_price = $auction->price;
+            $bid->save();
+
+
             $users = User::where('role','buyer')->get();
 
-            Notification::send($users,new NotifyBuyers($single));
+            Notification::send($users,new NotifyBuyers($auction));
 
             $auction = Auction::with('user')->find($auction->id);
             event(new AuctionCreated($auction));
@@ -82,76 +90,15 @@ class AuctionController extends Controller
     }
 
 
-    public function ShowBusinessForm()
-    {
-        $data = [];
-        $data['categories'] = Category::select('id', 'name')->get();
-
-        return view('user.frontend.businessell', $data);
-    }
-
-
-    public function ProcessBusinessForm(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|unique:singleproducts|max:255',
-            'company_name' => 'required',
-            'quantity' => 'required',
-            'price' => 'required',
-            'condition' => 'required',
-            'image' => 'required|image|mimes:jpeg,bmp,png',
-            'description' => 'required',
-            'expire_date' => 'required|date'
+    public function PlaceBids(Request $request){
+        $request->validate = ([
+            'bid_price'=>'required|numeric|min:1',
+            'auction_id' => 'required',
         ]);
 
 
-        $file = $request->file('image');
-        $file_name = uniqid('image_', true) . Str::random(10) . '.' . $file->getClientOriginalExtension();
-//        dd($file_name);
-        if ($file->isValid()) {
-            $file->storeAs('auction_images', $file_name);
-        }
-
-       // try {
-            $auction = new Auction();
-            $auction->user_id = auth()->user()->id;
-            $auction->email = $request->email;
-            $auction->type = $request->type;
-            $auction->category_id = $request->category;
-            $auction->expire_date = $request->expire_date;
-            $auction->save();
-
-            $bus = new Businessproduct();
-
-            $bus->auction_id = $auction->id;
-            $bus->company_name = $request->company_name;
-            $bus->quantity = $request->quantity;
-            $bus->title = $request->title;
-            $bus->condition = $request->condition;
-            $bus->description = $request->description;
-            $bus->image = $file_name;
-            $bus->price = $request->price;
-            $bus->save();
-           $users = User::where('role','buyer')->get();
-
-            Notification::send($users,new NotifyBuyers($bus));
-
-            $auction = Auction::with('user')->find($auction->id);
-            event(new AuctionCreated($auction));
-
-            session()->flash('type', 'success');
-            session()->flash('message', 'Uploads successfully');
-            return redirect()->back();
-
-
-       // } catch (\Exception $e) {
-         //   session()->flash('type', 'danger');
-          //  session()->flash('message', 'Uploads failed');
-          // return redirect()->back();
-
-        //}
-
     }
+
 
 
 }
